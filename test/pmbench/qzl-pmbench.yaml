@@ -1,0 +1,77 @@
+---
+
+#! qzl-pmbench.yaml
+suite: pmbench
+testcase: pmbench
+category: benchmark
+force_reboot: 1
+runtime: 120s
+timeout: 7200
+online-aep: 1
+numactl:
+  all: 1
+transparent_hugepage:
+  thp_enabled: never
+  thp_defrag: never
+bpfcc-tools:
+  tool: mapstat
+memory--numa_stat: 
+mpstat:
+  per_node: 1
+  nodes: ALL
+nr_processes: 5
+nr_threads: 1
+pattern: normal_ih
+# shape: 1
+ratio: 80
+cold: 1
+initialize: 1
+setsize: 5000M
+pmbench:
+  cpu_node_bind: even
+cpufreq_governor: performance
+perf-stat:
+  per_socket: 1
+sc_numa_balancing: 2
+numa_demotion_enabled: 1
+autonuma_rate_limit_mbps: 50
+sysctl:
+  sc_zone_reclaim_mode: 7
+  sc_swappiness: 100
+testbox: ddstPowerEdgeR750
+arch: x86_64
+tbox_group: ddstPowerEdgeR750
+
+#! hosts/ddstPowerEdgeR750
+nr_cpu: 112
+memory: 125G
+local_run: 1
+
+#! include/category/benchmark
+perf-sched:
+  lite_mode: 1
+perf-profile:
+  debug_mode: 0
+kmsg: 
+boot-time: 
+uptime: 
+iostat: 
+heartbeat: 
+vmstat: 
+numa-numastat: 
+numa-vmstat: 
+numa-meminfo: 
+proc-vmstat: 
+proc-stat: 
+meminfo: 
+slabinfo: 
+interrupts: 
+lock_stat: 
+softirqs: 
+bdi_dev_mapping: 
+diskstats: 
+nfsstat: 
+cpuidle: 
+cpufreq-stats: 
+turbostat: 
+sched_debug: 

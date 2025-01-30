@@ -1,0 +1,85 @@
+---
+
+#! ../../jobs/pmbench.yaml
+suite: pmbench
+testcase: pmbench
+category: benchmark
+force_reboot: 1
+runtime: 1800s
+timeout: 7200
+online-aep: 1
+debug-setup: yhnb69
+eatmem:
+  eatmem_size: 60G
+  mem_node_bind: even
+  eatmem_duration: 2000
+autonuma_migration: 
+numactl:
+  all: 1
+transparent_hugepage:
+  thp_enabled: never
+  thp_defrag: never
+bpfcc-tools:
+  tool: mapstat
+memory--numa_stat: 
+mpstat:
+  per_node: 1
+  nodes: ALL
+nr_processes: 64
+nr_threads: 1
+pattern: normal_ih
+ratio: 80
+cold: 1
+initialize: 1
+setsize: 4096M
+pmbench:
+  cpu_node_bind: even
+cpufreq_governor: performance
+perf-stat:
+  per_socket: 1
+sc_numa_balancing: 2
+numa_demotion_enabled: 1
+autonuma_rate_limit_mbps: 100
+sysctl:
+  sc_zone_reclaim_mode: 7
+  sc_swappiness: 100
+job_origin: "../../jobs/pmbench.yaml"
+testbox: ddst-PowerEdge-R750
+arch: x86_64
+tbox_group: ddst-PowerEdge-R750
+
+#! hosts/ddst-PowerEdge-R750
+nr_cpu: 112
+memory: 125G
+hdd_partitions: 
+ssd_partitions: 
+local_run: 1
+
+#! include/category/benchmark
+kmsg: 
+boot-time: 
+uptime: 
+iostat: 
+heartbeat: 
+vmstat: 
+numa-numastat: 
+numa-vmstat: 
+numa-meminfo: 
+proc-vmstat: 
+proc-stat: 
+meminfo: 
+slabinfo: 
+interrupts: 
+lock_stat: 
+perf-sched:
+  lite_mode: 1
+softirqs: 
+bdi_dev_mapping: 
+diskstats: 
+nfsstat: 
+cpuidle: 
+cpufreq-stats: 
+turbostat: 
+sched_debug: 
+perf-profile:
+  debug_mode: 0
