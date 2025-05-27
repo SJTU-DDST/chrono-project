@@ -105,3 +105,7 @@ numactl -C 101 /lkp/benchmarks/vm-scalability/usemem 60g --sleep 200000 &
 sudo taskset 0x5555555555555555 lkp run ./path-to-your-pmbench.yaml
 ```
 Which will throttle the memory bandwidth (if the slow tier is not physically remote), and ensure that the benchmark is running on the same CPU node.
+
+9. Patch the kernel.
+If you want to patch the kernel, you can find the patch files as chrono.patch* in the root directory.
+Tested on the basis of Linux kernel 5.15.0.
